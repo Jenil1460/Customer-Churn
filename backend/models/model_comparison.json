@@ -11,8 +11,8 @@
     "roc_auc": 0.6802,
     "train_test_gap": 0.03,
     "diagnosis": "Reasonably Consistent",
-    "training_time": 0.0602,
-    "prediction_time": 0.0105
+    "training_time": 0.0209,
+    "prediction_time": 0.0058
   },
   {
     "model": "Decision Tree",
@@ -26,8 +26,8 @@
     "roc_auc": 0.5144,
     "train_test_gap": 0.41,
     "diagnosis": "Potential Overfitting",
-    "training_time": 0.0404,
-    "prediction_time": 0.0105
+    "training_time": 0.0194,
+    "prediction_time": 0.0045
   },
   {
     "model": "Random Forest",
@@ -41,8 +41,8 @@
     "roc_auc": 0.6393,
     "train_test_gap": 0.28,
     "diagnosis": "Potential Overfitting",
-    "training_time": 0.6259,
-    "prediction_time": 0.0833
+    "training_time": 0.2744,
+    "prediction_time": 0.0195
   },
   {
     "model": "Gradient Boosting",
@@ -56,8 +56,8 @@
     "roc_auc": 0.6477,
     "train_test_gap": 0.1,
     "diagnosis": "Potential Overfitting",
-    "training_time": 0.3683,
-    "prediction_time": 0.0335
+    "training_time": 0.1662,
+    "prediction_time": 0.0044
   },
   {
     "model": "Support Vector Machine",
@@ -71,8 +71,8 @@
     "roc_auc": 0.6448,
     "train_test_gap": 0.0333,
     "diagnosis": "Reasonably Consistent",
-    "training_time": 0.3169,
-    "prediction_time": 0.0271
+    "training_time": 0.1783,
+    "prediction_time": 0.0158
   },
   {
     "model": "K-Nearest Neighbors",
@@ -86,8 +86,8 @@
     "roc_auc": 0.5647,
     "train_test_gap": 0.1192,
     "diagnosis": "Potential Overfitting",
-    "training_time": 0.0627,
-    "prediction_time": 2.0651
+    "training_time": 0.0105,
+    "prediction_time": 0.0634
   },
   {
     "model": "HistGradientBoosting",
@@ -101,7 +101,7 @@
     "roc_auc": 0.6382,
     "train_test_gap": 0.2983,
     "diagnosis": "Potential Overfitting",
-    "training_time": 0.4314,
-    "prediction_time": 0.0396
+    "training_time": 0.2941,
+    "prediction_time": 0.0077
   }
 ]

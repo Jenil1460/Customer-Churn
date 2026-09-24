@@ -22,7 +22,7 @@ def evaluate_advanced_models(X_train, X_test, y_train, y_test) -> Dict[str, Any]
     4. XGBoost Classifier (Optional, handled gracefully if not installed)
     """
     advanced_classifiers = {
-        "Random Forest": RandomForestClassifier(n_estimators=200, random_state=42, n_jobs=-1),
+        "Random Forest": RandomForestClassifier(n_estimators=200, random_state=42, n_jobs=1),
         "Gradient Boosting": GradientBoostingClassifier(n_estimators=150, learning_rate=0.1, random_state=42),
         "HistGradientBoosting": HistGradientBoostingClassifier(random_state=42),
     }

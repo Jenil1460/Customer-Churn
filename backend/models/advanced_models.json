@@ -10,7 +10,7 @@
     "recall": 0.2093,
     "f1": 0.3,
     "roc_auc": 0.6393,
-    "training_time": 0.5686,
+    "training_time": 0.6345,
     "description": "Ensemble of decision trees trained with bagging and feature randomness to reduce variance."
   },
   {
@@ -24,7 +24,7 @@
     "recall": 0.2326,
     "f1": 0.315,
     "roc_auc": 0.6274,
-    "training_time": 0.598,
+    "training_time": 0.5378,
     "description": "Sequential ensemble building trees sequentially to minimize residual loss."
   },
   {
@@ -38,7 +38,7 @@
     "recall": 0.2791,
     "f1": 0.331,
     "roc_auc": 0.6382,
-    "training_time": 0.2915,
+    "training_time": 0.3706,
     "description": "High-performance histogram-based gradient boosting, optimized for speed and large datasets."
   },
   {

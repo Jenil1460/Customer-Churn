@@ -52,7 +52,7 @@ def tune_hyperparameters(X_train, X_test, y_train, y_test) -> Dict[str, Any]:
         },
         {
             "name": "Random Forest",
-            "classifier": RandomForestClassifier(random_state=42, n_jobs=-1),
+            "classifier": RandomForestClassifier(random_state=42, n_jobs=1),
             "param_grid": {
                 "classifier__n_estimators": [100, 200],
                 "classifier__max_depth": [None, 10, 20],
@@ -91,7 +91,7 @@ def tune_hyperparameters(X_train, X_test, y_train, y_test) -> Dict[str, Any]:
             param_grid=param_grid,
             scoring="f1",
             cv=cv,
-            n_jobs=-1,
+            n_jobs=1,
             refit=True,
         )
 

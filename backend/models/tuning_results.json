@@ -10,7 +10,7 @@
     "test_f1": 0.5198,
     "test_accuracy": 0.6367,
     "test_roc_auc": 0.6799,
-    "tuning_duration": 7.3579
+    "tuning_duration": 2.1027
   },
   {
     "model": "Decision Tree",
@@ -24,7 +24,7 @@
     "test_f1": 0.3647,
     "test_accuracy": 0.64,
     "test_roc_auc": 0.5396,
-    "tuning_duration": 3.5405
+    "tuning_duration": 8.4762
   },
   {
     "model": "Random Forest",
@@ -38,7 +38,7 @@
     "test_f1": 0.2655,
     "test_accuracy": 0.7233,
     "test_roc_auc": 0.6609,
-    "tuning_duration": 11.3742
+    "tuning_duration": 50.7375
   },
   {
     "model": "Gradient Boosting",
@@ -51,6 +51,6 @@
     "test_f1": 0.2941,
     "test_accuracy": 0.68,
     "test_roc_auc": 0.6206,
-    "tuning_duration": 6.0881
+    "tuning_duration": 30.7426
   }
 ]

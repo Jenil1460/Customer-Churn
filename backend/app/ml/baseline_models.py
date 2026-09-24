@@ -25,7 +25,7 @@ def get_baseline_classifiers() -> Dict[str, Any]:
     return {
         "Logistic Regression": LogisticRegression(max_iter=2000, random_state=42),
         "Decision Tree": DecisionTreeClassifier(random_state=42),
-        "Random Forest": RandomForestClassifier(n_estimators=200, random_state=42, n_jobs=-1),
+        "Random Forest": RandomForestClassifier(n_estimators=200, random_state=42, n_jobs=1),
         "Gradient Boosting": GradientBoostingClassifier(random_state=42),
         "Support Vector Machine": SVC(probability=True, random_state=42),
         "K-Nearest Neighbors": KNeighborsClassifier(),
