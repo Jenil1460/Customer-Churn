@@ -43,6 +43,18 @@ def _read_json_artifact(filename: str) -> Any:
         )
 
 
+@router.get("/", summary="Root API Welcome", tags=["General"])
+def root():
+    """Welcome endpoint confirming the API is operational."""
+    return {
+        "message": "Customer Churn Prediction API is running successfully",
+        "status": "online",
+        "docs_url": "/docs",
+        "health_check": "/health",
+        "version": "1.0.0",
+    }
+
+
 @router.get("/health", summary="Health Check", tags=["Health"])
 def health_check():
     """Returns operational status and model loading state."""
