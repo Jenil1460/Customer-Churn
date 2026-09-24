@@ -1,0 +1,28 @@
+import React from 'react';
+
+export const LoadingSkeleton = ({ height = '120px', count = 1 }) => {
+  return (
+    <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem', width: '100%' }}>
+      {Array.from({ length: count }).map((_, i) => (
+        <div
+          key={i}
+          className="glass-card"
+          style={{
+            height,
+            background: 'linear-gradient(90deg, rgba(255,255,255,0.03) 25%, rgba(255,255,255,0.08) 50%, rgba(255,255,255,0.03) 75%)',
+            backgroundSize: '200% 100%',
+            animation: 'skeleton-pulse 1.5s infinite',
+          }}
+        />
+      ))}
+      <style>{`
+        @keyframes skeleton-pulse {
+          0% { background-position: 200% 0; }
+          100% { background-position: -200% 0; }
+        }
+      `}</style>
+    </div>
+  );
+};
+
+export default LoadingSkeleton;

@@ -1,0 +1,72 @@
+{
+  "Logistic Regression": {
+    "training_score": 0.74,
+    "test_score": 0.71,
+    "cv_mean": 0.7192,
+    "cv_std": 0.0125,
+    "train_test_gap": 0.03,
+    "cv_test_gap": 0.0092,
+    "diagnosis": "Reasonably Consistent",
+    "explanation": "Training (0.7400), cross-validation (0.7192), and test (0.7100) scores are reasonably close without extreme gap."
+  },
+  "Decision Tree": {
+    "training_score": 1.0,
+    "test_score": 0.59,
+    "cv_mean": 0.6042,
+    "cv_std": 0.0242,
+    "train_test_gap": 0.41,
+    "cv_test_gap": 0.0142,
+    "diagnosis": "Potential Overfitting",
+    "explanation": "Training score (1.0000) is higher than test score (0.5900) by 0.4100 (> 0.05), indicating the model may be fitting noise."
+  },
+  "Random Forest": {
+    "training_score": 1.0,
+    "test_score": 0.72,
+    "cv_mean": 0.69,
+    "cv_std": 0.0212,
+    "train_test_gap": 0.28,
+    "cv_test_gap": -0.03,
+    "diagnosis": "Potential Overfitting",
+    "explanation": "Training score (1.0000) is higher than test score (0.7200) by 0.2800 (> 0.05), indicating the model may be fitting noise."
+  },
+  "Gradient Boosting": {
+    "training_score": 0.8167,
+    "test_score": 0.7167,
+    "cv_mean": 0.6925,
+    "cv_std": 0.0135,
+    "train_test_gap": 0.1,
+    "cv_test_gap": -0.0242,
+    "diagnosis": "Potential Overfitting",
+    "explanation": "Training score (0.8167) is higher than test score (0.7167) by 0.1000 (> 0.05), indicating the model may be fitting noise."
+  },
+  "Support Vector Machine": {
+    "training_score": 0.75,
+    "test_score": 0.7167,
+    "cv_mean": 0.7033,
+    "cv_std": 0.0157,
+    "train_test_gap": 0.0333,
+    "cv_test_gap": -0.0134,
+    "diagnosis": "Reasonably Consistent",
+    "explanation": "Training (0.7500), cross-validation (0.7033), and test (0.7167) scores are reasonably close without extreme gap."
+  },
+  "K-Nearest Neighbors": {
+    "training_score": 0.7792,
+    "test_score": 0.66,
+    "cv_mean": 0.6708,
+    "cv_std": 0.0234,
+    "train_test_gap": 0.1192,
+    "cv_test_gap": 0.0108,
+    "diagnosis": "Potential Overfitting",
+    "explanation": "Training score (0.7792) is higher than test score (0.6600) by 0.1192 (> 0.05), indicating the model may be fitting noise."
+  },
+  "HistGradientBoosting": {
+    "training_score": 0.975,
+    "test_score": 0.6767,
+    "cv_mean": 0.6692,
+    "cv_std": 0.0151,
+    "train_test_gap": 0.2983,
+    "cv_test_gap": -0.0075,
+    "diagnosis": "Potential Overfitting",
+    "explanation": "Training score (0.9750) is higher than test score (0.6767) by 0.2983 (> 0.05), indicating the model may be fitting noise."
+  }
+}

@@ -1,0 +1,751 @@
+<USER_REQUEST>
+I am building a Customer Churn Prediction ML project.
+
+IMPORTANT ARCHITECTURE:
+
+The project has TWO COMPLETELY SEPARATE FOLDERS:
+
+ML-Churn-Project/
+├── backend/
+└── frontend/
+
+Your current task is ONLY the BACKEND.
+
+DO NOT create, modify, or build the React frontend.
+
+The backend must be a complete Python + FastAPI ML application.
+
+==================================================
+CORE REQUIREMENT
+==================================================
+
+The ML logic must remain in Python.
+
+React will NEVER perform ML calculations.
+
+React will only call FastAPI APIs.
+
+All of the following must happen inside the Python backend:
+
+- Excel dataset loading
+- data cleaning
+- preprocessing
+- encoding
+- scaling
+- train/test split
+- Logistic Regression
+- prediction
+- probability calculation
+- model evaluation
+- confusion matrix
+- accuracy
+- precision
+- recall
+- F1 score
+- model saving/loading
+
+==================================================
+MY ML WEEK 1–4 WORK
+==================================================
+
+Use my Week 1–4 ML practical as the basis for the project.
+
+The project is based on the Telco Customer Churn dataset.
+
+Week 1:
+Basic Pandas/data analysis.
+
+Week 2:
+Data cleaning and preprocessing.
+
+Week 3:
+Linear Regression for TotalCharges experimentation.
+
+Week 4:
+Logistic Regression for Customer Churn classification.
+
+IMPORTANT:
+
+The actual web application is a CUSTOMER CHURN PREDICTION application.
+
+Therefore the production model used by the API must be the Week 4 Logistic Regression classification model.
+
+Do NOT use the Week 3 TotalCharges regression model for churn prediction.
+
+Do NOT create an artificial rule such as:
+
+if TotalCharges >= 2000:
+    churn = No
+else:
+    churn = Yes
+
+Churn must be predicted by the actual trained Logistic Regression model.
+
+==================================================
+IMPORTANT CORRECTIONS TO MY NOTEBOOK
+==================================================
+
+Correct the technical mistakes from the notebook while preserving the intended ML workflow.
+
+1. customerID must NOT be used as a feature.
+
+2. Do not LabelEncode customerID.
+
+3. Categorical variables must be encoded properly.
+
+4. Numerical variables must be scaled.
+
+5. Preprocessing must be fitted only on training data.
+
+6. Prediction must use the exact same fitted preprocessing pipeline.
+
+7. Use stratified train/test split.
+
+8. LogisticRegression must have enough iterations to converge.
+
+9. Do not hardcode model metrics.
+
+10. Do not hardcode prediction probabilities.
+
+11. Do not hardcode predictions.
+
+12. Do not train using test data.
+
+13. Do not use an arbitrary threshold on TotalCharges for churn.
+
+==================================================
+DATASET
+==================================================
+
+I will provide an Excel dataset.
+
+The Excel file will be placed inside:
+
+backend/data/
+
+Use pandas.read_excel().
+
+Do NOT assume the filename unless the actual file exists.
+
+Inspect the Excel workbook and identify the correct sheet.
+
+Expected columns include:
+
+customerID
+gender
+SeniorCitizen
+Partner
+Dependents
+tenure
+PhoneService
+InternetService
+OnlineSecurity
+OnlineBackup
+TechSupport
+StreamingTV
+PaymentMethod
+MonthlyCharges
+TotalCharges
+Churn
+
+First inspect:
+
+- sheet names
+- columns
+- data types
+- number of rows
+- missing values
+
+Strip whitespace from column names.
+
+Strip unnecessary whitespace from string values.
+
+==================================================
+TARGET
+==================================================
+
+Target column:
+
+Churn
+
+Expected values:
+
+Yes
+No
+
+Convert internally:
+
+Yes = 1
+No = 0
+
+But API responses must return:
+
+"Yes"
+or
+"No"
+
+==================================================
+FEATURES
+==================================================
+
+customerID MUST NOT be used.
+
+Use the remaining valid ML features.
+
+Numerical features:
+
+SeniorCitizen
+tenure
+MonthlyCharges
+TotalCharges
+
+Categorical features:
+
+gender
+Partner
+Dependents
+PhoneService
+InternetService
+OnlineSecurity
+OnlineBackup
+TechSupport
+StreamingTV
+PaymentMethod
+
+Before training, verify which columns actually exist in the Excel file.
+
+If a required feature is missing, produce a clear error.
+
+==================================================
+PREPROCESSING
+==================================================
+
+Use a proper sklearn Pipeline.
+
+Use:
+
+ColumnTransformer
+
+Numerical pipeline:
+
+SimpleImputer(strategy="median")
++
+StandardScaler()
+
+Categorical pipeline:
+
+SimpleImputer(strategy="most_frequent")
++
+OneHotEncoder(handle_unknown="ignore")
+
+Then:
+
+LogisticRegression(
+    max_iter=2000,
+    random_state=42
+)
+
+The complete preprocessing + model must be one Pipeline.
+
+Example architecture:
+
+preprocessor
+    ↓
+LogisticRegression
+
+DO NOT manually scale data separately for prediction.
+
+DO NOT manually encode values separately for prediction.
+
+The saved Pipeline must handle prediction.
+
+==================================================
+TRAIN TEST SPLIT
+==================================================
+
+Use:
+
+train_test_split(
+    X,
+    y,
+    test_size=0.2,
+    random_state=42,
+    stratify=y
+)
+
+Training:
+
+model.fit(X_train, y_train)
+
+Evaluation:
+
+model.predict(X_test)
+
+model.predict_proba(X_test)
+
+Never fit preprocessing on X_test.
+
+==================================================
+MODEL EVALUATION
+==================================================
+
+Calculate actual values from the dataset.
+
+Calculate:
+
+Training Accuracy
+Testing Accuracy
+Precision
+Recall
+F1 Score
+
+Also calculate:
+
+Confusion Matrix
+
+Classification Report
+
+Pay particular attention to Churn = Yes.
+
+Do not claim the model is good only because accuracy is high.
+
+Return actual metrics.
+
+==================================================
+MODEL STORAGE
+==================================================
+
+Create:
+
+backend/models/
+
+Save:
+
+churn_model.joblib
+
+and:
+
+model_metadata.json
+
+Use joblib.
+
+Metadata should contain:
+
+- model name
+- algorithm
+- dataset rows
+- dataset columns
+- feature names
+- numerical features
+- categorical features
+- training accuracy
+- testing accuracy
+- precision
+- recall
+- F1 score
+- confusion matrix
+- training timestamp
+
+Never hardcode these values.
+
+==================================================
+FASTAPI
+==================================================
+
+Use FastAPI.
+
+Main file:
+
+backend/app/main.py
+
+Run using:
+
+uvicorn app.main:app --reload
+
+==================================================
+API ENDPOINTS
+==================================================
+
+Create the following APIs.
+
+------------------------------------------
+GET /health
+------------------------------------------
+
+Response:
+
+{
+  "status": "ok",
+  "model_loaded": true
+}
+
+------------------------------------------
+GET /api/model-info
+------------------------------------------
+
+Return:
+
+- model name
+- algorithm
+- dataset size
+- target
+- features
+- training information
+- metrics
+
+------------------------------------------
+GET /api/dataset-info
+------------------------------------------
+
+Return:
+
+- total rows
+- total columns
+- column names
+- missing values
+- churn distribution
+- numerical summaries if useful
+
+DO NOT expose customerID records unnecessarily.
+
+------------------------------------------
+GET /api/metrics
+------------------------------------------
+
+Return:
+
+accuracy
+precision
+recall
+f1_score
+confusion_matrix
+classification_report
+
+------------------------------------------
+GET /api/feature-options
+------------------------------------------
+
+Return categorical values from the actual dataset.
+
+Example:
+
+{
+  "gender": ["Female", "Male"],
+  "Partner": ["No", "Yes"],
+  "Dependents": ["No", "Yes"],
+  "InternetService": ["DSL", "Fiber optic", "No"],
+  "PaymentMethod": [
+    "Bank transfer (automatic)",
+    "Credit card (automatic)",
+    "Electronic check",
+    "Mailed check"
+  ]
+}
+
+Do not invent values if they can be obtained from the dataset.
+
+------------------------------------------
+POST /api/predict
+------------------------------------------
+
+This is the main API.
+
+Accept:
+
+{
+  "gender": "Male",
+  "SeniorCitizen": 0,
+  "Partner": "Yes",
+  "Dependents": "No",
+  "tenure": 12,
+  "PhoneService": "Yes",
+  "InternetService": "Fiber optic",
+  "OnlineSecurity": "No",
+  "OnlineBackup": "Yes",
+  "TechSupport": "No",
+  "StreamingTV": "Yes",
+  "PaymentMethod": "Electronic check",
+  "MonthlyCharges": 79.50,
+  "TotalCharges": 954.00
+}
+
+customerID should NOT be required.
+
+Use the loaded Pipeline.
+
+Perform:
+
+prediction = model.predict(...)
+probability = model.predict_proba(...)
+
+For binary classification:
+
+churn_probability = probability of class 1 / Yes
+
+Return:
+
+{
+  "prediction": "Yes",
+  "churn": true,
+  "probability": 0.73,
+  "confidence": 73.0,
+  "risk_level": "High"
+}
+
+The probability MUST be generated by the model.
+
+Never fake it.
+
+==================================================
+RISK LEVEL
+==================================================
+
+For UI presentation:
+
+probability < 0.40
+Low
+
+0.40 <= probability < 0.70
+Medium
+
+probability >= 0.70
+High
+
+This is only a presentation layer.
+
+The actual prediction remains the Logistic Regression prediction.
+
+==================================================
+POST /api/retrain
+==================================================
+
+Create an endpoint that retrains the model using the current Excel dataset.
+
+Flow:
+
+Excel
+↓
+Validate
+↓
+Clean
+↓
+Separate X/Y
+↓
+Remove customerID
+↓
+Train/Test Split
+↓
+Preprocessing Pipeline
+↓
+Logistic Regression
+↓
+Evaluate
+↓
+Save joblib
+↓
+Save metadata
+↓
+Return metrics
+
+==================================================
+CORS
+==================================================
+
+Configure CORS for the separate React frontend.
+
+Allow:
+
+http://localhost:5173
+
+Make the frontend URL configurable.
+
+Do not let CORS configuration interfere with local development.
+
+==================================================
+PYDANTIC
+==================================================
+
+Create proper Pydantic request schemas.
+
+Validate:
+
+SeniorCitizen:
+0 or 1
+
+tenure:
+>= 0
+
+MonthlyCharges:
+>= 0
+
+TotalCharges:
+>= 0
+
+Validate categorical fields where appropriate.
+
+Return useful HTTP errors.
+
+==================================================
+ERROR HANDLING
+==================================================
+
+Handle:
+
+- missing Excel file
+- invalid Excel file
+- missing columns
+- invalid request
+- missing model
+- training failure
+- invalid numerical input
+- invalid categorical input
+
+Return clean JSON responses.
+
+Do not expose Python stack traces.
+
+==================================================
+PROJECT STRUCTURE
+==================================================
+
+Use:
+
+backend/
+│
+├── app/
+│   ├── __init__.py
+│   ├── main.py
+│   │
+│   ├── api/
+│   │   ├── __init__.py
+│   │   └── routes.py
+│   │
+│   ├── ml/
+│   │   ├── __init__.py
+│   │   ├── data_loader.py
+│   │   ├── preprocessing.py
+│   │   ├── trainer.py
+│   │   ├── predictor.py
+│   │   └── evaluator.py
+│   │
+│   ├── schemas/
+│   │   ├── __init__.py
+│   │   └── prediction.py
+│   │
+│   └── config.py
+│
+├── data/
+│   └── my_dataset.xlsx
+│
+├── models/
+│   ├── churn_model.joblib
+│   └── model_metadata.json
+│
+├── tests/
+│   ├── test_health.py
+│   ├── test_prediction.py
+│   └── test_metrics.py
+│
+├── requirements.txt
+├── .gitignore
+└── README.md
+
+Adapt names if necessary.
+
+==================================================
+DEPENDENCIES
+==================================================
+
+Create requirements.txt containing the necessary packages, including:
+
+fastapi
+uvicorn
+pandas
+numpy
+scikit-learn
+openpyxl
+joblib
+pydantic
+pytest
+httpx
+
+Do not add unnecessary packages.
+
+==================================================
+SWAGGER
+==================================================
+
+Swagger must work:
+
+/docs
+
+OpenAPI must work:
+
+/openapi.json
+
+Make endpoint descriptions useful.
+
+==================================================
+TESTING
+==================================================
+
+Before saying the backend is complete:
+
+1. Install dependencies.
+2. Load the Excel file.
+3. Train the model.
+4. Save the model.
+5. Restart backend.
+6. Verify model loads.
+7. Test /health.
+8. Test /api/model-info.
+9. Test /api/dataset-info.
+10. Test /api/metrics.
+11. Test /api/feature-options.
+12. Test /api/predict.
+13. Test invalid prediction.
+14. Test /api/retrain.
+15. Verify Swagger.
+16. Verify CORS.
+17. Verify prediction probability comes from predict_proba().
+18. Verify no customerID is used as a feature.
+
+Fix every error before completion.
+
+==================================================
+IMPORTANT
+==================================================
+
+Do not build frontend.
+
+Do not create React components.
+
+Do not put ML calculations in JavaScript.
+
+Everything ML-related must stay in Python.
+
+At the end report:
+
+BACKEND COMPLETE
+
+Show:
+
+1. Final folder structure
+2. Installation command
+3. Run command
+4. FastAPI URL
+5. Swagger URL
+6. API endpoints
+7. Actual dataset row count
+8. Actual model metrics
+9. Example prediction request
+10. Example prediction response
+
+Never fabricate metrics.
+</USER_REQUEST>
+<ADDITIONAL_METADATA>
+The current local time is: 2026-08-27T11:52:04+05:30.
+</ADDITIONAL_METADATA>
+<USER_SETTINGS_CHANGE>
+The user changed setting `Model Selection` from None to Gemini 3.6 Flash (High). No need to comment on this change if the user doesn't ask about it. If reporting what model you are, please use a human readable name instead of the exact string.
+</USER_SETTINGS_CHANGE>

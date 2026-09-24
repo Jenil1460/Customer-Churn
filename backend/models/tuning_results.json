@@ -1,0 +1,56 @@
+[
+  {
+    "model": "Logistic Regression",
+    "best_params": {
+      "C": 100.0,
+      "class_weight": "balanced",
+      "solver": "lbfgs"
+    },
+    "best_cv_f1": 0.5071,
+    "test_f1": 0.5198,
+    "test_accuracy": 0.6367,
+    "test_roc_auc": 0.6799,
+    "tuning_duration": 7.3579
+  },
+  {
+    "model": "Decision Tree",
+    "best_params": {
+      "criterion": "entropy",
+      "max_depth": 15,
+      "min_samples_leaf": 1,
+      "min_samples_split": 2
+    },
+    "best_cv_f1": 0.3593,
+    "test_f1": 0.3647,
+    "test_accuracy": 0.64,
+    "test_roc_auc": 0.5396,
+    "tuning_duration": 3.5405
+  },
+  {
+    "model": "Random Forest",
+    "best_params": {
+      "max_depth": null,
+      "min_samples_leaf": 2,
+      "min_samples_split": 2,
+      "n_estimators": 100
+    },
+    "best_cv_f1": 0.2888,
+    "test_f1": 0.2655,
+    "test_accuracy": 0.7233,
+    "test_roc_auc": 0.6609,
+    "tuning_duration": 11.3742
+  },
+  {
+    "model": "Gradient Boosting",
+    "best_params": {
+      "learning_rate": 0.2,
+      "max_depth": 5,
+      "n_estimators": 100
+    },
+    "best_cv_f1": 0.3188,
+    "test_f1": 0.2941,
+    "test_accuracy": 0.68,
+    "test_roc_auc": 0.6206,
+    "tuning_duration": 6.0881
+  }
+]
