@@ -36,6 +36,3 @@ Thumbs.db
 .pytest_cache/
 .coverage
 htmlcov/
-
-# Models & Data (optional to keep or ignore)
-models/*.joblib
